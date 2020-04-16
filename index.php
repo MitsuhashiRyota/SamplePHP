@@ -68,7 +68,7 @@
   */
   class DefaultParams {
 
-    function defaultParamCheckerU() {
+    function defaultParamChecker() {
       
       // 各型のデフォルト値を設定
       $arry = [
@@ -83,9 +83,13 @@
       // 配列に入れたデフォルト値を変数に代入し、代入した値に変化があったか確認
       foreach($arry as $i){
         $i ??= 'hoge';
+        var_dump($i);
 
         // 値を確認
+        echo "<p>";
+        echo "値確認：";
         echo $i;
+        echo "</p>";
       }
     }
   }
@@ -98,6 +102,7 @@ $c->obj = new stdClass();
 $c->nullableClassType = new TotalPlace();
 
 // 静的型付けが行われたグローバル変数を確認
+echo "<p>========= 実行結果1 =========</p>";
 echo "<p>INT型：</p>";
 var_dump($c->i);
 
@@ -112,3 +117,11 @@ echo "<p>コメントアウト</p>";
 echo "<p>返却値がINT型を指定 関数を実行：</p>";
 $c->nullableClassType->setPlace(100);
 var_dump($c->nullableClassType->getTotalPlace());
+echo "<br>";
+
+
+// 実行結果2
+echo "<p>========= 実行結果2 =========</p>";
+echo "<p>ULL合体代入演算子</p>";
+$d = new DefaultParams();
+$d->defaultParamChecker();
