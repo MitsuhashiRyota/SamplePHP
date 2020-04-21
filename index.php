@@ -1,127 +1,19 @@
-<?php 
+<?php
 
-/**
- * 変数に型宣言を確認するサンプルクラス
- */
- class HOGE {
-   // int型
-   public int $i = 0;
-
-   // string型
-   public string $s = '';
-
-   // object型
-   public ?object $obj;
-
-   // ?typeはnull許容型
-   public ?TotalPlace $nullableClassType;
- }
-
- /**
-  * 合計金額を返却するクラス 
-  */
- class TotalPlace {
-   
-   // 金額 型付きする前にGlobal変数のアクセスはできない 初期化必須
-   public int $place = 0;
-
-   /**
-    * 金額を$placeに追加
-    * 引数：int型
-    * 返却：なし 
-    */
-   function setPlace(int $val) :void {
-     $this->place = $this->place + $val;
-
-     // A void function must not return a value 返却したらErrorが発生
-     // return $this->place;
-   }
-
-    /**
-     * 金額の合計値を返却
-     * 引数：なし
-     * 返却：int型
-     */
-    function getTotalPlace() :int {
-      return $this->place;
-    }
-
-   /**
-    * エラーが発生 合計金額を返却
-    * 引数：なし
-    * 返却：int型
-    */
-   function getErrorTotalPlace() :int {
-
-     // returnの型が異なるError
-     // Fatal error: Uncaught TypeError: Return value of TotalPlace::getErrorTotalPlace() must be of the type int, string returned
-
-     // returnを指定していないError
-     // Fatal error: Uncaught TypeError: Return value of TotalPlace::getErrorTotalPlace() must be of the type int, none returned
-
-     // return "Hello!";
-   }
- }
-
- /**
-  * NULL合体代入演算子
-  */
-  class DefaultParams {
-
-    function defaultParamChecker() {
-      
-      // 各型のデフォルト値を設定
-      $arry = [
-        null,  // "hoge"
-        false, // false
-        true,  // true
-        '',    // ""
-        0,     // 0
-        [],    // []
-      ];
-
-      // 配列に入れたデフォルト値を変数に代入し、代入した値に変化があったか確認
-      foreach($arry as $i){
-        $i ??= 'hoge';
-        var_dump($i);
-
-        // 値を確認
-        echo "<p>";
-        echo "値確認：";
-        echo $i;
-        echo "</p>";
-      }
-    }
-  }
-
-// 実行結果
-$c = new HOGE();
-$c->i = 1;
-$c->s = 'string';
-$c->obj = new stdClass();
-$c->nullableClassType = new TotalPlace();
-
-// 静的型付けが行われたグローバル変数を確認
-echo "<p>========= 実行結果1 =========</p>";
-echo "<p>INT型：</p>";
-var_dump($c->i);
-
-echo "<p>STRING型：</p>";
-var_dump($c->s);
-
-echo "<p>返却値がINT型を指定 INT型以外を返却する関数を実行：</p>";
-echo "<p>コメントアウト</p>";
-// コメントアウトを外すとErrorが発生 以下の処理が行われない。
-//var_dump($c->nullableClassType->getErrorTotalPlace());
-
-echo "<p>返却値がINT型を指定 関数を実行：</p>";
-$c->nullableClassType->setPlace(100);
-var_dump($c->nullableClassType->getTotalPlace());
-echo "<br>";
-
-
-// 実行結果2
-echo "<p>========= 実行結果2 =========</p>";
-echo "<p>ULL合体代入演算子</p>";
-$d = new DefaultParams();
-$d->defaultParamChecker();
+?>
+<hmtl>
+  <head>
+  </head>
+  <doby>
+    <div>
+      <h1>PHP 7.4 新機能一覧</h1>
+      <p><a href="./php7_4.php">1.PHP7.4 静的型付け動作検証</a></p>
+      <p><a href="./sampleFFI.php">2.PHP7.4 FFI(Foreign Function Interface)</a></p>
+      <p><a href="./sampleNull.php">3.PHP7.4 NULL合体代入演算子</a></p>
+      <p><a href="./sampleCommon.php">4.PHP7.4 共変戻り値・反変パラメータ</a></p>
+      <p><a href="./sampleSepareter.php">5.PHP7.4 数値セパレータ</a></p>
+      <p><a href="./sampleUnPack.php">6.PHP7.4 引数アンパック</a></p>
+      <p><a href="./sampleWeakReference.php">7.PHP7.4 弱い参照</a></p>
+    </div>
+  </body>
+</html>
